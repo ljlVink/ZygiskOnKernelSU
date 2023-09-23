@@ -106,6 +106,7 @@ HAS64BIT=false && [ -d "/system/lib64" ] && HAS64BIT=true
 
 mkdir "$MODPATH/bin"
 mkdir "$MODPATH/system"
+mkdir "$MODPATH/data/adb/"
 [ "$HAS32BIT" = true ] && mkdir "$MODPATH/system/lib"
 [ "$HAS64BIT" = true ] && mkdir "$MODPATH/system/lib64"
 
@@ -149,7 +150,7 @@ fi
 
 ui_print "- Generating magic"
 MAGIC=$(tr -dc 'a-f0-9' </dev/urandom | head -c 18)
-echo -n "$MAGIC" > "$MODPATH/data/zygisk_magic"
+echo -n "$MAGIC" > "$MODPATH/data/adb/zygisk_magic"
 
 ui_print "- Setting permissions"
 chmod 0744 "$MODPATH/daemon.sh"
